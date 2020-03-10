@@ -15,7 +15,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
 
-        String csvFile = "C:\\Users\\oisin\\Documents\\GitHub Repos\\Sweng\\SE-Project-Group-7\\testData.csv";
+      /*  String csvFile = "C:\\Users\\oisin\\Documents\\GitHub Repos\\Sweng\\SE-Project-Group-7\\testData.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
@@ -48,8 +48,7 @@ public class MyApplication extends Application {
             }
         }
 
-    }
-
+    } */
 
         final String dummyId = "rnad";
         final String dummmyInfo = " The fall armyworm (Spodoptera frugiperda) is a species in the order Lepidoptera and is the larval life stage of a fall armyworm moth";
