@@ -1,0 +1,93 @@
+>Food resources>
+Caterpillars, Witch Hazel
+The armyworm's diet consists mainly of grasses and small-grain crops such as corn, but the species has been noted to consume over 80 different plants.
+Armyworms earned their common name by eating all plant matter they encounter in their wide dispersals, like a large army. 
+A few sweet corn varieties have partial, but not complete, resistance to armyworms. 
+The resistance comes from a unique 33-kD proteinase that the corn produces when it is being fed on by fall armyworms or other larva. 
+This protein was found to significantly decrease fall armyworm larva growth.
+
+>Cannibalism>
+When possible, larva will cannibalize the larva of smaller instars. 
+A 1999 study showed that cannibalism only benefits the caterpillar when other food is scarce. 
+Despite this, the caterpillars will cannibalize others whenever they can, even though it was found to decrease their own fitness in many cases. 
+One known reason why cannibalism is detrimental to the fall armyworm is because of disease transmission to the cannibal. 
+In nature, the negative effects of cannibalism may be balanced by the fact that cannibalism removes competitors, thereby making more resources accessible and indirectly increasing fall armyworms' fitness.
+
+>Adults>
+Adult moths sip nectar from flowers such as that of witch hazel (Hamamelis virginiana).
+
+>Life history>
+The fall armyworm's life cycle is completed within 30 days during summer, and 60 days during the spring and autumn seasons; during the winter, these caterpillars' life cycle lasts about 80 to 90 days.
+The number of generations a moth will have in a year varies based on climate, but in her life span a female will typically lay about 1,500 eggs.[4] Because larva cannot enter into diapause they cannot survive cold temperatures.
+
+>Egg>
+The armyworm's egg is dome-shaped, and measures around 0.4 mm in diameter and 0.3 mm in height.
+Females prefer to lay eggs on the underside of leaves, but in high populations they will lay them just about anywhere.
+In warm weather, the eggs will hatch into larvae within a few days.
+
+>Larva>
+The larva go through six different instars, each varying slightly in physical appearance and pattern.
+The larva process lasts from 14 to 30 days, again depending on temperatures.
+The mature caterpillar is about 1.5–2.0 inches (38–51 mm) in length. 
+This is the most destructive life stage as the larvae have biting mouth parts. 
+The larvae have a distinctive inverted Y suture on the forehead.
+
+>Pupa>
+The larva then pupate underground for 7 to 37 days in a cocoon they form of soil and silk.
+Duration and survival of the pupal stage depend on the temperature of the environment.
+
+>Adults>
+Once emerged, the adults live for about 10 days, and sometimes up to 21 days, with the female laying most of her eggs early in life.
+Adults are nocturnal and fare best during warm and humid nights.
+
+>Migration>
+Adults are capable of flying long distances, so even though they are unable to overwinter north of the southern region of the United States, the moths can migrate as far north as Southern Canada in warm months.[20][4] Their migration rate is remarkably fast, estimated at 300 miles per generation.[20] Some scientists speculate that this fast migration is aided by the movement of air in weather fronts.[20]
+
+>Enemies>
+Predators
+Fall armyworm caterpillars are directly preyed upon by many invertebrates and vertebrates. Common predators include birds, rodents, beetles, earwigs, and other insects. 
+It has been shown that direct predation can cause significant losses to caterpillar populations.
+The larva's main defense against enemies is their ability to reach large numbers and migrate before seasonal conditions are suitable for predators.
+
+>Parasitoids>
+Fly and wasp parasitoids target the fall armyworm, most commonly Archytas marmoratus, Cotesia marginiventris, and Chelonus texanus. 
+The armyworm is also vulnerable to additional parasitoids, varying with location.
+
+>Parasites and disease>
+Fifty-three different parasite species have been discovered in fall armyworm larvae, spanning ten different families.
+Often larvae can survive through much of their crop consumption despite outbreaks of disease, because of the larva's fast life cycle.
+Despite this, parasites of the fall armyworm are being studied extensively as a means of fighting armyworm attacks on crops.
+One suggested approach would be to introduce parasites from South America to North American fall armyworms, and vice versa.
+
+>Subspecies>
+The fall armyworm may be presently undergoing a divergence into two separate species. 
+These two strains have major genetic differences that are connected to the plants they feed on, even though both still exist in the same area (sympatric speciation).
+These two strains can be loosely categorized into a rice strain and a corn strain.
+This separation is occurring because of differences in habitat (preferred host plant), and differences in reproductive behavior.
+The reproductive differences can be divided into two causes: difference in the timing of mating at night, and difference in female sex pheromones.
+
+>Mating>
+Mate searching behavior and male–male conflict
+A female attracts males by perching atop the host plant feeding area and releasing a sex pheromone as the signal that she wishes to mate.
+The pheromone has been studied and found to contain the components Z7-12 and Z9-14.[21] Each female only mates once per night; this creates a physical conflict between the multiple males that will fly towards a ready female. 
+There is an order to which the females call and mate: virgin females do first, females who have mated once next, and females who have already mated multiple times call and mate last during the night.
+
+>Interactions with humans>
+Pest of crop plants
+Because of their food preferences, fall armyworm larvae can wreak havoc on a wide range of crops. 
+The first historical account of the fall armyworm's destruction was in 1797 in Georgia. 
+Destruction can happen almost over night, because the first stages of a caterpillar's life require very little food, and the later stages require about 50 times more. 
+Because of this rapid change in food consumption, the presence of larva will not be noticed until they have destroyed almost everything in as little as a night.
+Some examples of targeted crops include cotton, tobacco, sweet corn, rice, peanuts, and even fruits such as apples, oranges, and many more. 
+The list of possible food sources for the worms is extensive, so crop damage is wide-ranging.
+It is estimated that almost 40 percent of those species that armyworms target are economically important. 
+Because the larva eat so much of the plant, they are very detrimental to crop survival and yield. 
+In corn, larvae will even burrow into the corn ear to eat the kernels.
+
+
+>Responses>
+Because of the fall armyworms' great destructive power, farmers must go to great lengths to deter the larvae. 
+Insecticide is a widely used form of protection; in southern regions, farmers may have to apply insecticide to corn every day. 
+Another strategy is to plant crops earlier to avoid the increase in armyworm numbers as the summer progresses.
+In South Africa, farmers are using pheromone lures with a combination of Dichlorvos blocks to trap and eliminate male arymworms with the intention of disrupting mating cycles.
+
