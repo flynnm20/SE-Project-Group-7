@@ -53,10 +53,10 @@ def getRecords():
         for row in records:
             print(row)
     except sqlite3.Error as error:
-        print("Failed to insert multiple records into sqlite table", error)
+        print("Failed to get multiple records into sqlite table", error)
 
 
-records = []
+#records = []
 ''' Uncomment insertRecord() if you wish to add data into the database placed in the records variable. Look above for how to place data'''
 #insertRecord(records)
 ''' Uncomment if you wanna check if your data is in the database'''
