@@ -36,7 +36,7 @@ class MyHomePage extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const <Widget>[
+          children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
@@ -50,18 +50,87 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             ListTile(
+
               leading: Icon(Icons.assignment),
               title: Text('Identification'),
+              onTap: ()
+              {
+              Navigator.push
+                (
+                context,
+                MaterialPageRoute(builder: (context) => IdentificationPage()),
+                );
+              },
             ),
+
             ListTile(
               leading: Icon(Icons.assignment),
               title: Text('Prevention'),
+              onTap: ()
+              {
+                Navigator.push
+                  (
+                  context,
+                  MaterialPageRoute(builder: (context) => PreventionPage()),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.hot_tub),
               title: Text('Report infestation'),
+              onTap: ()
+              {
+                Navigator.push
+                  (
+                  context,
+                  MaterialPageRoute(builder: (context) => ReportPage()),
+                );
+              },
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+class IdentificationPage extends StatelessWidget {
+  IdentificationPage({Key key}) : super(key: key);
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Identification Information"),
+      ),
+      body: Center(
+      ),
+    );
+  }
+}
+class PreventionPage extends StatelessWidget {
+  PreventionPage({Key key}) : super(key: key);
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Prevention Information"),
+      ),
+      body: Center(
+      ),
+    );
+  }
+}
+class ReportPage extends StatelessWidget {
+  ReportPage({Key key}) : super(key: key);
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Report an Attack"),
+      ),
+      body: Center(
+        child: RaisedButton(
+
+          child: Text('Report an infestation'),
         ),
       ),
     );
