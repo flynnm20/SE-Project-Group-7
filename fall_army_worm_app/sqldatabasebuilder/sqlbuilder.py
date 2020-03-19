@@ -56,8 +56,14 @@ def getRecords():
         print("Failed to get multiple records into sqlite table", error)
 
 
-#records = []
+records = [('faw-adult.jpg',datetime.now(),'N/A','Picture of faw in adult stage'),
+           ('faw-pupa.jpg',datetime.now(),'N/A','Picture of faw in pupa stage'),
+           ('faw-larvae.jpg',datetime.now(),'N/A','Picture of faw in larvae stage'),
+           ('faw-eggs.jpg',datetime.now(),'N/A','Picture of faw in egg stage'),
+           ('faw-infestation.jpg',datetime.now(),'N/A','Picture of faw infestation'),
+           ('faw-infestation1.jpg',datetime.now(),'N/A','Picture of faw infestation'),
+           ('faw-lifecycle.gif',datetime.now(),'N/A','Picture of faw lifecycle')]
 ''' Uncomment insertRecord() if you wish to add data into the database placed in the records variable. Look above for how to place data'''
-#insertRecord(records)
+insertRecord(records)
 ''' Uncomment if you wanna check if your data is in the database'''
 getRecords()
