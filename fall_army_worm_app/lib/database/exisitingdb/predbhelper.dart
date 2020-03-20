@@ -15,8 +15,13 @@ class DBHelper {
   static const String TABLE = 'bugImages';
   static const String DB_NAME = 'bugDatabase.db';
 
+  DBHelper._();
+  static final DBHelper dataer = DBHelper._();
+
   Future<Database> get db async {
+    print("attempting to get DB");
     if (null != _db) {
+      print("Gotten DB");
       return _db;
     }
     _db = await initDB();
@@ -24,23 +29,18 @@ class DBHelper {
   }
 
   initDB() async {
+    print("in initDB");
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, "bugDatabase.db");
-
-    File db = new File(path);
-    bool exists = db.exists() as bool;
-    if(exists){
-      var db = await openDatabase(path);
-      return db;
-    }else{
-      ByteData data = await rootBundle.load(join("sqldatabasebuilder", "bugDatabase.db"));
-      List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-      await new File(path).writeAsBytes(bytes);
-      var db = await openDatabase(path);
-      return db;
+    print("db does not exist, creating");
+    ByteData data = await rootBundle.load(join("sqldatabasebuilder", "bugDatabase.db"));
+    List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    await new File(path).writeAsBytes(bytes);
+    var dbs = await openDatabase(path);
+    print("completed");
+    return dbs;
     }
 
-  }
 
   Future<bugData> save(bugData bug) async {
     var dbClient = await db;
@@ -49,6 +49,7 @@ class DBHelper {
   }
 
   Future<List<bugData>> getinfo() async {
+    print("querying db");
     var dbClient = await db;
     List<Map> maps = await dbClient.query(TABLE, columns: [IMAGEID, TIMETAKEN,LOCATION,IMAGEDESC]);
     List<bugData> bugs = [];
@@ -57,6 +58,7 @@ class DBHelper {
         bugs.add(bugData.fromMap(maps[i]));
       }
     }
+    print("Gotten data, returning");
     return bugs;
   }
 

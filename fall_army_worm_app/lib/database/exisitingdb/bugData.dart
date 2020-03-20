@@ -2,7 +2,7 @@ class bugData {
   String imageID;
   String location;
   String imageDesc;
-  DateTime timeTaken;
+  String timeTaken;
 
   bugData(this.imageID,this.imageDesc,this.location,this.timeTaken);
 
