@@ -59,7 +59,7 @@ class MyHomePage extends StatelessWidget {
               Navigator.push
                 (
                 context,
-                MaterialPageRoute(builder: (context) => IdentificationPage()),
+                MaterialPageRoute(builder: (context) => imageHome()),
                 );
               },
             ),
@@ -132,6 +132,15 @@ class ReportPage extends StatelessWidget {
         child: RaisedButton(
 
           child: Text('Report an infestation'),
+
+          onPressed:()
+          {
+            Navigator.push
+              (
+              context,
+              MaterialPageRoute(builder: (context) => SaveImageDemo()),
+            );
+          },
         ),
       ),
     );
