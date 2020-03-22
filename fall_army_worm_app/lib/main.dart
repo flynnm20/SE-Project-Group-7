@@ -1,14 +1,16 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'database/SaveImageDemo.dart';
-import 'database/exisitingdb/ImageGetternsetter.dart';
 import './pages/home.dart';
 import './pages/Identify.dart';
 import './pages/report.dart';
 import './pages/prevent.dart';
 import './pages/myinfo.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+List<CameraDescription> cameras;
 
-void main()  {
+Future<Null> main() async  {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   runApp(HomeApp());
 }
 
@@ -18,9 +20,10 @@ class HomeApp extends StatefulWidget {
     return MyAppState();
   }
 }
+
 class MyAppState extends State<HomeApp> {
   GoogleMapController mapController;
-
+  MyAppState();
   final LatLng _center = const LatLng(45.521563, -122.677433);
 
   void _onMapCreated(GoogleMapController controller) {
@@ -29,11 +32,12 @@ class MyAppState extends State<HomeApp> {
   int _selectedTab = 0;
   final _pageOptions = [
     HomePage(),
-    IDPage(),
+    IDPage(cameras),
     ReportPage(),
     PreventPage(),
     InfoPage(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -7,21 +7,6 @@ import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final cameras = await availableCameras();
-  final firstCamera = cameras.first;
-
-  runApp(
-    MaterialApp(
-      theme: ThemeData.dark(),
-      home: TakePictureScreen(
-        camera: firstCamera,
-      ),
-    ),
-  );
-}
-
 class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
   const TakePictureScreen({
