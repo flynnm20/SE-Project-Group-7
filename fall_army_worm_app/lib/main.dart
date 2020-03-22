@@ -1,35 +1,100 @@
 import 'package:flutter/material.dart';
 import 'database/SaveImageDemo.dart';
 import 'database/exisitingdb/ImageGetternsetter.dart';
-
+import './pages/home.dart';
+import './pages/Identify.dart';
+import './pages/report.dart';
+import './pages/prevent.dart';
+import './pages/myinfo.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main()  {
   runApp(HomeApp());
 }
 
-class HomeApp extends StatelessWidget {
+class HomeApp extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+ /* Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:  MyApp(),
     );
-  }
+  }*/
 }
 
-class MyApp extends StatelessWidget {
+/*class MyApp extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
+*/
+class MyAppState extends State<HomeApp> {
+  GoogleMapController mapController;
 
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+  int _selectedTab = 0;
+  final _pageOptions = [
+    HomePage(),
+    IDPage(),
+    ReportPage(),
+    PreventPage(),
+    InfoPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
-      home: MyHomePage(),
+      theme: ThemeData(
+          primarySwatch: Colors.grey,
+          primaryTextTheme: TextTheme(
+            title: TextStyle(color: Colors.white),
+          )),
+      home: Scaffold(
+
+        body:  _pageOptions[_selectedTab],
+
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          unselectedItemColor: Colors.black54,
+          //selectedItemColor: Color(0xff2ac6),
+          currentIndex: _selectedTab,
+          onTap: (int index) {
+            setState(() {
+              _selectedTab = index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.camera),
+              title: Text('Identify'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.error),
+              title: Text('Report'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.block),
+              title: Text('Prevent'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.info_outline),
+              title: Text('My Info'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+/*class MyHomePage extends StatelessWidget {
   MyHomePage({Key key}) : super(key: key);
 
   @override
@@ -97,8 +162,10 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
-}
-class IdentificationPage extends StatelessWidget {
+}*/
+
+
+/*class IdentificationPage extends StatelessWidget {
   IdentificationPage({Key key}) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -110,8 +177,10 @@ class IdentificationPage extends StatelessWidget {
       ),
     );
   }
-}
-class PreventionPage extends StatelessWidget {
+}*/
+
+
+/*class PreventionPage extends StatelessWidget {
   PreventionPage({Key key}) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -123,8 +192,8 @@ class PreventionPage extends StatelessWidget {
       ),
     );
   }
-}
-class ReportPage extends StatelessWidget {
+}*/
+/*class ReportPage extends StatelessWidget {
   ReportPage({Key key}) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -149,5 +218,5 @@ class ReportPage extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
