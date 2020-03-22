@@ -58,23 +58,28 @@ class MyAppState extends State<HomeApp> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.home,
+              color: Colors.lightGreen),
               title: Text('Home'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.camera),
+              icon: Icon(Icons.camera,
+                  color: Colors.lightGreen),
               title: Text('Identify'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.error),
+              icon: Icon(Icons.error,
+                  color: Colors.lightGreen),
               title: Text('Report'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.block),
+              icon: Icon(Icons.block,
+                  color: Colors.lightGreen),
               title: Text('Prevent'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.info_outline),
+              icon: Icon(Icons.info_outline,
+                  color: Colors.lightGreen),
               title: Text('My Info'),
             ),
           ],
