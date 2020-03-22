@@ -22,7 +22,7 @@ class _imageHome extends State<imageHome>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Flutter SQLite")),
+      //appBar: AppBar(title: Text("Flutter SQLite")),
       body: FutureBuilder<List<bugData>>(
         future: DBHelper.dataer.getinfo(),
         builder: (BuildContext context, AsyncSnapshot<List<bugData>> snapshot) {
