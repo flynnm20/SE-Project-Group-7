@@ -29,12 +29,12 @@ class MyAppState extends State<HomePage> {
       home: Scaffold(
 
         body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 11.0,
+          onMapCreated: _onMapCreated,
+          initialCameraPosition: CameraPosition(
+            target: _center,
+            zoom: 11.0,
+          ),
         ),
-      ),
 
       ),
     );

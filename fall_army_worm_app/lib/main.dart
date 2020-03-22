@@ -1,82 +1,128 @@
 import 'package:flutter/material.dart';
 import 'database/SaveImageDemo.dart';
 import 'database/exisitingdb/ImageGetternsetter.dart';
+import './pages/home.dart';
+import './pages/Identify.dart';
+import './pages/report.dart';
+import './pages/prevent.dart';
+import './pages/myinfo.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-void main() => runApp(new FallArmywormApp());
+void main()  {
+  runApp(HomeApp());
+}
 
-class FallArmywormApp extends StatelessWidget {
+class HomeApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+class MyAppState extends State<HomeApp> {
+  GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+  int _selectedTab = 0;
+  final _pageOptions = [
+    HomePage(),
+    IDPage(),
+    ReportPage(),
+    PreventPage(),
+    InfoPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: new ThemeData(
-          brightness: Brightness.light,
-          primaryColor: Colors.lightGreen,
-          accentColor: Colors.yellowAccent,
-          fontFamily: 'Georgia',
-          textTheme: TextTheme(
-            headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            title: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          ),
-          buttonTheme: ButtonThemeData(
-            buttonColor: Colors.amberAccent,
-            shape: RoundedRectangleBorder(),
-          )
+      theme: ThemeData(
+          primarySwatch: Colors.grey,
+          primaryTextTheme: TextTheme(
+            title: TextStyle(color: Colors.white),
+          )),
+      home: Scaffold(
+
+        body:  _pageOptions[_selectedTab],
+
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          unselectedItemColor: Colors.black54,
+          //selectedItemColor: Color(0xff2ac6),
+          currentIndex: _selectedTab,
+          onTap: (int index) {
+            setState(() {
+              _selectedTab = index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.camera),
+              title: Text('Identify'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.error),
+              title: Text('Report'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.block),
+              title: Text('Prevent'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.info_outline),
+              title: Text('My Info'),
+            ),
+          ],
+        ),
       ),
-      home: HomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
-  @override
-  _HomePageState createState() => _HomePageState();
-  /*
+/*class MyHomePage extends StatelessWidget {
+  MyHomePage({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('    The Fall Armyworm App'),
+        title: const Text('Fallarmy Worm'),
       ),
-      body: Center(
-        child: RaisedButton(
-          child: Text(
-            'Fall Armyworm Information',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => imageHome()),
-            );
-          }
-        )
-      ),/*
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+                color: Colors.blue,
               ),
               child: Text(
-                'Options Menu',
-                style: Theme.of(context).textTheme.title,
+                'Drawer Header',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
               ),
             ),
             ListTile(
 
               leading: Icon(Icons.assignment),
               title: Text('Identification'),
-              onTap: () {
-              Navigator.push(
+              onTap: ()
+              {
+              Navigator.push
+                (
                 context,
                 MaterialPageRoute(builder: (context) => imageHome()),
                 );
               },
             ),
+
             ListTile(
               leading: Icon(Icons.assignment),
               title: Text('Prevention'),
@@ -103,117 +149,13 @@ class HomePage extends StatefulWidget {
             ),
           ],
         ),
-      ),*/
-    );
-  }*/
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("              Fall Armyworm App"),
-        elevation: .1,
-        backgroundColor: Color.fromRGBO(67, 110, 0, 1.0),
-      ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 2.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          padding: EdgeInsets.all(3.0),
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => imageHome()),
-                );
-            },
-            child: makeDashboardItem("Information", Icons.info_outline),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => IdentificationPage()),
-                );
-              },
-              child: makeDashboardItem("Identification", Icons.search),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => PreventionPage()),
-                );
-              },
-              child: makeDashboardItem("Prevention", Icons.block),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ReportPage()),
-                );
-              },
-              child: makeDashboardItem("Report", Icons.report),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
-                );
-              },
-              child: makeDashboardItem("View Map", Icons.location_on),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CameraPage()),
-                );
-              },
-              child: makeDashboardItem("Camera", Icons.camera_alt),
-            ),
-          ],
-        ),
       ),
     );
   }
-}
-Card makeDashboardItem(String title, IconData icon) {
-  return Card(
-    elevation: 1.0,
-    margin: new EdgeInsets.all(8.0),
-    child: Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(10, 100, 0, 1.0)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        verticalDirection: VerticalDirection.down,
-        children: <Widget>[
-          SizedBox(height: 50.0),
-          Center(
-            child: Icon(
-              icon,
-              size: 40.0,
-              color: Colors.white,
-            )
-          ),
-          SizedBox(height: 20.0),
-          new Center(
-            child: new Text(title,
-            style: new TextStyle(fontSize: 18.0, color: Colors.black)),
-          )
-        ],
-      ),
-    ),
-  );
-}
+}*/
 
-class IdentificationPage extends StatelessWidget {
+
+/*class IdentificationPage extends StatelessWidget {
   IdentificationPage({Key key}) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -225,9 +167,10 @@ class IdentificationPage extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
-class PreventionPage extends StatelessWidget {
+
+/*class PreventionPage extends StatelessWidget {
   PreventionPage({Key key}) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -239,8 +182,8 @@ class PreventionPage extends StatelessWidget {
       ),
     );
   }
-}
-class ReportPage extends StatelessWidget {
+}*/
+/*class ReportPage extends StatelessWidget {
   ReportPage({Key key}) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -258,25 +201,12 @@ class ReportPage extends StatelessWidget {
             Navigator.push
               (
               context,
-               MaterialPageRoute(builder: (context) => SaveImageDemo()),
+              MaterialPageRoute(builder: (context) => SaveImageDemo()),
             );
           },
         ),
       ),
     );
   }
-}
+}*/
 
-class MapPage extends StatelessWidget {
-
-  Widget build(BuildContext context) {
-    //Run the map
-  }
-}
-
-class CameraPage extends StatelessWidget {
-
-  Widget build(BuildContext context) {
-    //Run the camera
-  }
-}
