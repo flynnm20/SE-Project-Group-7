@@ -76,11 +76,10 @@ class MyAppState extends State<PreventPage> {
               height: 240,
               fit: BoxFit.cover,),
 
-            Text("Enemies" + "\n",
+            Text("Enemies" + "\n" "\n" "Predators",
                 style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 18,),
                 textAlign : TextAlign.center),
                 Text(
-                "Predators" + "\n" "\n"
                 "Fall armyworm caterpillars are directly preyed upon by many invertebrates and vertebrates. Common predators include birds, rodents, beetles, earwigs, and other insects." + "\n" "\n"
                 "It has been shown that direct predation can cause significant losses to caterpillar populations." + "\n"
                 "The larva's main defense against enemies is their ability to reach large numbers and migrate before seasonal conditions are suitable for predators." + "\n"
@@ -114,7 +113,43 @@ class MyAppState extends State<PreventPage> {
               "Early-feeding / “leaf scratching” lesions." + "\n"
               "Ragged and elongated holes on the leaves." + "\n"
               "Damage on tassels and ears" + "\n"),
-
+          Text ("Combating FAW" "\n",
+                  style: new TextStyle(fontWeight:  FontWeight.bold, fontSize: 18,),
+                  textAlign: TextAlign.center,),
+            Text("1. Plant early in the season, avoiding late and off-season planting" "\n" "\n"
+                "Early planting allows maturity of maize before high pest population build-up." "\n"
+                "\n"
+                "2. Use mechanical control methods" "\n" "\n"
+                "Examples include the following:" "\n" "\n"
+                "Handpicking and squashing egg masses." "\n""\n"
+                "Picking and crashing caterpillars or drowning them in soapy water." "\n" "\n"
+                "Ploughing before onset of rains to expose pupae to predators and solar heat." "\n""\n"
+                "Application of suffocating materials such as wood ash, dry soil/sand in plant whorls." "\n""\n"
+                "3. Use of insecticides" "\n"),
+            Image.asset('assets/images/freshMan.jpg',
+              width: 200,
+              height: 350,
+              fit: BoxFit.cover,),
+           Text(
+               "\n"  "Spray late in the evening or very early in the morning when the larvae are active (not hiding)." "\n""\n"
+                    "Direct the spray to the plant whorls (funnel) and top leaves." "\n""\n"
+                    "Repeat spraying 2 to 3 times to target young larvae that emerge after earlier sprays – it can be at 2 weeks intervals or as guided by scouting observations." "\n""\n"
+                   "Ensure food safety, protection of human health and avoid environmental pollution; spray only when necessary on the basis of scouting observations and avoid spraying 2 months to maturity of maize." "\n""\n"
+                   "Choose an appropriate insecticide on the basis of experience or recommendation from agricultural extension agents." "\n""\n"
+                   "Several insecticides are effective against fall armyworm, subject to appropriate application as outlined above." "\n""\n"
+                   "Among others, the following insecticides have proved to be effective:-" "\n""\n"
+                   "Abamectin + Chlorantraniliprole (e.g. Voliam Targo 063 SC);" "\n""\n"
+                   "Lufenuron (e.g. Match 50EC);" "\n""\n"
+                   "Chlorantraniliprole (e.g. Coragen 20SC);" "\n""\n"
+                   "Emamectin benzoate (e.g. Prove 1.92EC);" "\n""\n"
+                   "Pyriproxyfen (e.g. Profen 10.8EC);" "\n""\n"
+                   "Acephate (e.g. Orthene Pellet), etc." "\n""\n"
+                   "Alternate products with different active ingredients, preferably after 2 applications, to prevent pesticide resistance development.""\n""\n"
+                   "4. Restrict/prevent  movement  of infested  plant  materials" "\n""\n"
+                   "Destroy infested materials or feed them to livestock as close to the affected farm as possible. Be very careful when feeding livestock after disposal; particularly if spraying had been done recently, to avoid animal poisoning." "\n""\n"
+                   "5. FAW Tolerant Maize Varieties" "\n""\n"
+                   "Currently no FAW tolerant varieties available in the market, However KALRO researchers are currently undertaking research towards release of such varieties" "\n"
+            )
           ],
         )
         )

@@ -87,6 +87,7 @@ class IdentificationPage extends State<IDPage> {
                   height: 240,
                   fit: BoxFit.cover,),
               ],
+
             )
         )
     );
