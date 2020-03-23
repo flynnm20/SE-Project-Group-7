@@ -30,7 +30,7 @@ class _imageHome extends State<imageHome>{
             return Center(
               child: new ListView(
                 children: [
-                  Center(child: Text(snapshot.data[0].imageID + " " + snapshot.data[0].imageDesc,),),
+                  Center(child: Text(snapshot.data[1].imageID + " " + snapshot.data[0].imageDesc,),),
                   Image.asset('assets/images/Fall-armyworm-fawchart.jpg',
                     fit: BoxFit.cover,
                   ),
@@ -76,13 +76,6 @@ class _imageHome extends State<imageHome>{
           } else {
             return Center(child: CircularProgressIndicator());
           }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () async {
-          await DBHelper.dataer.getinfo();
-          setState(() {});
         },
       ),
     );
