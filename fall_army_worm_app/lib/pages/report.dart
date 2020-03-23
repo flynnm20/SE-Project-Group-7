@@ -14,6 +14,7 @@ class ReportPageState extends State<ReportPage> {
   String _ID;
   String _location;
   String _phoneNumber;
+  String _description;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -100,6 +101,17 @@ class ReportPageState extends State<ReportPage> {
     );
   }
 
+  Widget _buildDescriptionBox() {
+    return TextFormField(
+      decoration: InputDecoration(hintText: 'Describe what you have identified and are reporting'),
+      keyboardType: TextInputType.multiline,
+      maxLines: 10,
+      onSaved: (String value) {
+        _description = value;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,7 +132,7 @@ class ReportPageState extends State<ReportPage> {
               _buildEmail(),
               _buildPhoneNumber(),
               _buildLocation(),
-            //  _buildDescriptionBox(),
+              _buildDescriptionBox(),
 
               SizedBox(height: 100),
               RaisedButton(
