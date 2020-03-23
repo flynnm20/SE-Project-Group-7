@@ -45,7 +45,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Take a picture')),
+      appBar: AppBar(title: Text('Take a picture'),backgroundColor: Colors.lightGreen,),
 
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,

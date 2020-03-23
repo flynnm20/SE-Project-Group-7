@@ -117,6 +117,7 @@ class ReportPageState extends State<ReportPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Report an Infestation"),
+        backgroundColor: Colors.lightGreen,
       ),
       body: SingleChildScrollView(
 

@@ -37,7 +37,7 @@ class MyAppState extends State<HomeApp> {
     ReportPage(),
     PreventPage(),
     CameraPage(cameras.first),
-    InfoPage(),
+   // InfoPage(),
   ];
 
   @override
@@ -88,11 +88,11 @@ class MyAppState extends State<HomeApp> {
                     color: Colors.lightGreen),
                 title: Text("Camera")
             ),
-            BottomNavigationBarItem(
+           /* BottomNavigationBarItem(
               icon: Icon(Icons.info_outline,
                   color: Colors.lightGreen),
               title: Text('My Info'),
-            ),
+            ),*/
           ],
         ),
       ),

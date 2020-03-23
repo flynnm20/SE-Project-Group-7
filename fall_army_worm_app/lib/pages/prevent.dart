@@ -13,6 +13,7 @@ class MyAppState extends State<PreventPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Prevention Information"),
+        backgroundColor: Colors.lightGreen,
       ),
         body: SingleChildScrollView(
 
