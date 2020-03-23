@@ -3,19 +3,25 @@ import 'package:flutter/material.dart';
 import '../database/SaveImageDemo.dart';
 import '../database/exisitingdb/ImageGetternsetter.dart';
 import 'package:fallarmywormapp/appCamera/cameraFile.dart';
-class IDPage extends StatefulWidget {
-  
+class CameraPage extends StatefulWidget {
+  var cameras;
+  CameraPage(this.cameras);
+
   @override
   State<StatefulWidget> createState() {
-    return IdentificationPage();
+    return CameraPageState();
   }
+
+
 }
 
 
-class IdentificationPage extends State<IDPage> {
+class CameraPageState extends State<CameraPage> {
   //IdentificationPage({Key key}) : super(key: key);
 
   Widget build(BuildContext context) {
-  return imageHome();
+    return Scaffold(
+      body:TakePictureScreen(camera: cameras.first,),
+    );
   }
 }

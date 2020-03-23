@@ -5,6 +5,7 @@ import './pages/Identify.dart';
 import './pages/report.dart';
 import './pages/prevent.dart';
 import './pages/myinfo.dart';
+import './pages/camera.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 List<CameraDescription> cameras;
 
@@ -32,9 +33,10 @@ class MyAppState extends State<HomeApp> {
   int _selectedTab = 0;
   final _pageOptions = [
     HomePage(),
-    IDPage(cameras),
+    IDPage(),
     ReportPage(),
     PreventPage(),
+    CameraPage(cameras.first),
     InfoPage(),
   ];
 
@@ -80,6 +82,11 @@ class MyAppState extends State<HomeApp> {
               icon: Icon(Icons.block,
                   color: Colors.lightGreen),
               title: Text('Prevent'),
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.camera_alt,
+                    color: Colors.lightGreen),
+                title: Text("Camera")
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.info_outline,

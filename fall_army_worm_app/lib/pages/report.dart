@@ -120,6 +120,7 @@ class ReportPageState extends State<ReportPage> {
               _buildEmail(),
               _buildPhoneNumber(),
               _buildLocation(),
+            //  _buildDescriptionBox(),
 
               SizedBox(height: 100),
               RaisedButton(
