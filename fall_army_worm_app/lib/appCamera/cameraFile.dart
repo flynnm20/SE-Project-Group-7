@@ -5,7 +5,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
-
+import 'package:photo_view/photo_view.dart';
 
 class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
@@ -19,6 +19,7 @@ class TakePictureScreen extends StatefulWidget {
 }
 
 class TakePictureScreenState extends State<TakePictureScreen> {
+  double scale = 1.0;
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
@@ -29,7 +30,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     _controller = CameraController(
       widget.camera,
 
-      ResolutionPreset.medium,
+      ResolutionPreset.high,
     );
 
 
@@ -50,8 +51,26 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
+          var cameraPreview = new CameraPreview(_controller);
           if (snapshot.connectionState == ConnectionState.done) {
-            return CameraPreview(_controller);
+            return new GestureDetector(
+                onScaleUpdate:(one){
+                  print(one.scale);
+
+                  scale = one.scale;
+                  setState(() {});
+                },
+
+                child: new Transform.scale(
+                    scale: scale,
+                    child: new AspectRatio(
+                        aspectRatio: _controller.value.aspectRatio,
+                        child: cameraPreview
+                    )
+                )
+
+
+            );
           } else {
             return Center(child: CircularProgressIndicator());
           }
@@ -85,14 +104,16 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
-
   const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Display the Picture')),
-      body: Image.file(File(imagePath)),
+      body: PhotoView(
+
+        imageProvider: Image.file(File(this.imagePath)).image,
+      )
     );
   }
 }
