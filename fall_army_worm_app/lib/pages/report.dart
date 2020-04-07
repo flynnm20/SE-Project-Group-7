@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart'; //For creating the SMTP Server
 import '../database/SaveImageDemo.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class ReportPage extends StatefulWidget {
   @override
@@ -17,6 +19,43 @@ class ReportPageState extends State<ReportPage> {
   String _location;
   String _phoneNumber;
   String _description;
+ //image stuff
+  Future<File> imageFile;
+
+  chooseImage() {
+    setState(() {
+      imageFile = ImagePicker.pickImage(source: ImageSource.gallery);
+    });
+  }
+
+  Widget showImage() {
+    return FutureBuilder<File>(
+      future: imageFile,
+      builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
+        if(snapshot.connectionState == ConnectionState.done && null != snapshot.data) {
+          return Image.file(
+              snapshot.data,
+              width: 300,
+              height: 300,
+          );
+        }
+        else if (null != snapshot.error) {
+          return const Text(
+            'Error Picking Image',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.red),
+          );
+        }
+        else {
+          return const Text(
+            'No Image Selected',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.red),
+          );
+        }
+      },
+    );
+  }
 
   sendMessage() async {
     String username = "fallarmywormsetest@gmail.com";
@@ -31,6 +70,7 @@ class ReportPageState extends State<ReportPage> {
       //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com']) //cc Recipents emails
       //..bccRecipients.add(Address('bccAddress@example.com')) //bcc Recipents emails
       ..subject ='Report has been made at ${DateTime.now()}' //subject of the email
+      ..attachments.add(FileAttachment(await imageFile))
       ..text = 'Name:= ' + _name + '\n'
                 +'email:=' + _email + '\n'
                 +'ID:='  + _ID + '\n'
@@ -56,7 +96,7 @@ class ReportPageState extends State<ReportPage> {
                     +'Phone Number:=' + _phoneNumber + '\n'
                     +'Description:='  + _description //body of the email
                     +'\n Thank You for your assistance \n'
-                    +'Trocaire Fall-Army Worm team'; //body of the email
+                    +'Trócaire Fall-Army Worm team'; //body of the email
       try {
         final sendReport = await send(confrimMessage, smtpServer);
       print('Message sent: ' +
@@ -191,7 +231,13 @@ class ReportPageState extends State<ReportPage> {
                   _buildPhoneNumber(),
                   _buildLocation(),
                   _buildDescriptionBox(),
-                  SizedBox(height: 100),
+                  SizedBox(height: 50),
+                  showImage(),
+                  OutlineButton(
+                    onPressed: chooseImage,
+                    child: Text('Attach Image'),
+                  ),
+                  SizedBox(height: 50),
                   RaisedButton(
                     color: Colors.lightGreen,
                     child: Text(
@@ -222,21 +268,4 @@ class ReportPageState extends State<ReportPage> {
         ));
   }
 }
-/*Center(
-        child: RaisedButton(
 
-          child: Text('Report an infestation'),
-
-          onPressed:()
-          {
-            Navigator.push
-              (
-              context,
-              MaterialPageRoute<Widget>(builder: (context) => SaveImageDemo()),
-            );
-          },
-        ),
-      ),
-    )
-  }
-}*/
