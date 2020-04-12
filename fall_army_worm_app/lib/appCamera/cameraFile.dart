@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 
 class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
@@ -32,8 +32,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
       ResolutionPreset.high,
     );
-
-
     _initializeControllerFuture = _controller.initialize();
   }
 
@@ -56,7 +54,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             return new GestureDetector(
                 onScaleUpdate:(one){
                   print(one.scale);
-
                   scale = one.scale;
                   setState(() {});
                 },
@@ -85,7 +82,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
               (await getTemporaryDirectory()).path,
               '${DateTime.now()}.png',
             );
-
             await _controller.takePicture(path);
             Navigator.push(
               context,
@@ -104,16 +100,61 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
-  const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
 
+  const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = FlatButton(
+      child: Text("Cancel"),
+      onPressed:  () {Navigator.of(context).pop();},
+    );
+    Widget continueButton = FlatButton(
+      child: Text("Yes"),
+      onPressed:  () async {
+        try {
+          GallerySaver.saveImage(imagePath);
+          Navigator.of(context).pop();
+        }catch (e) {
+          print(e);
+        }
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("AlertDialog"),
+      content: Text("Save Image?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Display the Picture')),
+      appBar: AppBar(backgroundColor: Colors.lightGreen,),
       body: PhotoView(
 
         imageProvider: Image.file(File(this.imagePath)).image,
-      )
-    );
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.save),
+        onPressed:  () async {
+    try {
+        showAlertDialog(context);
+
+    }catch (e) {
+      print(e);
+    }
+    }
+        ),
+      );
   }
 }
