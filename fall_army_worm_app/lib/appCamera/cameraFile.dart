@@ -6,6 +6,7 @@ import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:gallery_saver/gallery_saver.dart';
+import 'package:flutter/services.dart';
 
 class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
@@ -39,11 +40,21 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
+    double _getImageZoom(MediaQueryData data) {
+      final double logicalWidth = data.size.width;
+      final double logicalHeight = _controller.value.aspectRatio * logicalWidth *11;
+
+      final EdgeInsets padding = data.padding;
+      final double maxLogicalHeight =
+          data.size.height - padding.top - padding.bottom;
+
+      return maxLogicalHeight / logicalHeight;
+    }
     return Scaffold(
       appBar: AppBar(title: Text('Take a picture'),backgroundColor: Colors.lightGreen,),
-
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
@@ -52,17 +63,20 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             return new GestureDetector(
                 onScaleUpdate:(one){
                   print(one.scale);
-                  scale = one.scale;
+                  if(one.scale >= 1) {
+                    scale = one.scale;
+                  }
                   setState(() {});
                 },
-
-                child: new Transform.scale(
-                    scale: scale,
-                    child: new AspectRatio(
-                        aspectRatio: _controller.value.aspectRatio,
-                        child: cameraPreview
-                    )
-                )
+              child: Transform.scale(
+                scale: scale + _getImageZoom(MediaQuery.of(context)),
+                child: Center(
+                  child: AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: cameraPreview,
+                  ),
+                ),
+              ),
             );
           } else {
             return Center(child: CircularProgressIndicator());
