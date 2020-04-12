@@ -4,6 +4,7 @@ import 'package:mailer/smtp_server.dart'; //For creating the SMTP Server
 import '../database/SaveImageDemo.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:camera/camera.dart';
 
 class ReportPage extends StatefulWidget {
   @override
@@ -56,7 +57,22 @@ class ReportPageState extends State<ReportPage> {
       },
     );
   }
-
+  showAlertDialog(BuildContext context) {
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("AlertDialog"),
+      content: Text("Report Sent!"),
+      actions: [
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
   sendMessage() async {
     String username = "fallarmywormsetest@gmail.com";
     String password = "setest123";
@@ -80,6 +96,7 @@ class ReportPageState extends State<ReportPage> {
 
     try {
       final sendReport = await send(message, smtpServer);
+      showAlertDialog(context);
       print('Message sent: ' +
           sendReport.toString()); //print if the email is sent
        final confrimMessage = Message()
@@ -87,6 +104,7 @@ class ReportPageState extends State<ReportPage> {
       ..recipients.add(_email) //recipent email
       //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com']) //cc Recipents emails
       //..bccRecipients.add(Address('bccAddress@example.com')) //bcc Recipents emails
+         ..attachments.add(FileAttachment(await imageFile))
       ..subject = 'Confirmation: Report has been made at ${DateTime.now()}' //subject of the email
       ..text = 'The following information has been reported.\n'
                     +'Name:= ' + _name + '\n'
