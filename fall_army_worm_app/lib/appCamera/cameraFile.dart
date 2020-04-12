@@ -26,10 +26,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   void initState() {
     super.initState();
-
     _controller = CameraController(
       widget.camera,
-
       ResolutionPreset.high,
     );
     _initializeControllerFuture = _controller.initialize();
@@ -65,8 +63,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                         child: cameraPreview
                     )
                 )
-
-
             );
           } else {
             return Center(child: CircularProgressIndicator());
@@ -110,13 +106,9 @@ class DisplayPictureScreen extends StatelessWidget {
     );
     Widget continueButton = FlatButton(
       child: Text("Yes"),
-      onPressed:  () async {
-        try {
+      onPressed:  (){
           GallerySaver.saveImage(imagePath);
           Navigator.of(context).pop();
-        }catch (e) {
-          print(e);
-        }
       },
     );
     // set up the AlertDialog
