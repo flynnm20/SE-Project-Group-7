@@ -29,7 +29,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     super.initState();
     _controller = CameraController(
       widget.camera,
-      ResolutionPreset.high,
+      ResolutionPreset.veryHigh,
     );
     _initializeControllerFuture = _controller.initialize();
   }
@@ -142,7 +142,7 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.black,),
+      appBar: AppBar(backgroundColor: Colors.black12,),
       body: PhotoView(
 
         imageProvider: Image.file(File(this.imagePath)).image,
