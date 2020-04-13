@@ -1,3 +1,4 @@
+import 'package:fallarmywormapp/appCamera/cameraFile.dart';
 import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart'; //For creating the SMTP Server
@@ -23,10 +24,45 @@ class ReportPageState extends State<ReportPage> {
  //image stuff
   Future<File> imageFile;
 
+
+  imageAlertDialog(BuildContext context) {
+    // set up the AlertDialog
+    Widget cancelButton = FlatButton(
+      child: Text("Choose Image"),
+      onPressed:  () {
+        setState(() {
+          imageFile = ImagePicker.pickImage(source: ImageSource.gallery);
+          Navigator.of(context).pop();
+        });
+        },
+    );
+    Widget continueButton = FlatButton(
+      child: Text("Take Picture"),
+      onPressed:  (){
+        setState(() {
+          imageFile = ImagePicker.pickImage(source: ImageSource.camera);
+          Navigator.of(context).pop();
+        });
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+        title: Text("Take a new picture?"),
+        content: Text("Choose an image from Gallery or take a picture"),
+        actions: [
+          cancelButton,
+          continueButton,
+        ]
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
   chooseImage() {
-    setState(() {
-      imageFile = ImagePicker.pickImage(source: ImageSource.gallery);
-    });
+    imageAlertDialog(context);
   }
 
   Widget showImage() {
@@ -60,7 +96,7 @@ class ReportPageState extends State<ReportPage> {
   showAlertDialog(BuildContext context) {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("AlertDialog"),
+      title: Text("Success!"),
       content: Text("Report Sent!"),
       actions: [
       ],

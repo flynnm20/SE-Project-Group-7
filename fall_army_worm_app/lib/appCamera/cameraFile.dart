@@ -46,15 +46,12 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     double _getImageZoom(MediaQueryData data) {
       final double logicalWidth = data.size.width;
       final double logicalHeight = _controller.value.aspectRatio * logicalWidth *11;
-
       final EdgeInsets padding = data.padding;
-      final double maxLogicalHeight =
-          data.size.height - padding.top - padding.bottom;
-
+      final double maxLogicalHeight = data.size.height - padding.top - padding.bottom;
       return maxLogicalHeight / logicalHeight;
     }
     return Scaffold(
-      appBar: AppBar(title: Text('Take a picture'),backgroundColor: Colors.lightGreen,),
+      appBar: AppBar(title: Text('Take a picture'),backgroundColor: Colors.black,),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
@@ -127,8 +124,8 @@ class DisplayPictureScreen extends StatelessWidget {
     );
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("AlertDialog"),
-      content: Text("Save Image?"),
+      title: Text("Save Image?"),
+      content: Text("Would you like to save this pictrue?"),
       actions: [
         cancelButton,
         continueButton,
@@ -145,7 +142,7 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.lightGreen,),
+      appBar: AppBar(backgroundColor: Colors.black,),
       body: PhotoView(
 
         imageProvider: Image.file(File(this.imagePath)).image,
