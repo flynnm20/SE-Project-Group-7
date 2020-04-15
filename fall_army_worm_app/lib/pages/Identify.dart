@@ -32,7 +32,7 @@ class IdentificationPage extends State<IDPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Prevention Information"),
+          title: Text("Identification Information"),
           backgroundColor: Colors.lightGreen,
         ),
 
